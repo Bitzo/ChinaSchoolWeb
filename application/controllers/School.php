@@ -33,7 +33,7 @@ class School extends CI_Controller
 		if (empty($data['schools'])) {
 			show_404();
 		}
-		$data['list'] = $this->location_model->get_school_byLoc($data['schools']['0']['School_Province'],15);
+		$data['list']=$this->location_model->get_school_byLoc($data['schools']['0']['School_Province'],15);
 		$this->load->helper('url');
 		// $this->output->enable_profiler(TRUE);
 		$this->load->view('templete/content/header',$data);

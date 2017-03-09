@@ -7,7 +7,7 @@ if (!(isset($_COOKIE['is_log'])&&$_COOKIE['is_log']==1)) {
 <html>
     <head>
         <title>高校云-后台管理系统</title>
-        <script src="js/jquery.js"></script>        
+        <script src="js/jquery.js"></script>
         <!-- <script src="js/index.js"></script> -->
         <script src='jquery.js'></script>
         <script type="text/javascript">
@@ -29,7 +29,7 @@ if (!(isset($_COOKIE['is_log'])&&$_COOKIE['is_log']==1)) {
   function selectArea(){
     var cityid=$("#city").val();
     $("#areaSpan").load("index_area.php?cityid="+cityid);
-  } 
+  }
         </script>
         <link href="css/reset.css" rel="stylesheet">
         <link href="css/main.css" rel="stylesheet">
@@ -40,8 +40,8 @@ if (!(isset($_COOKIE['is_log'])&&$_COOKIE['is_log']==1)) {
     </head>
     <body>
      <div class="main-wrapper">
-       
-       <header><!--页头开始--> 
+
+       <header><!--页头开始-->
          <ul>
             <li><a href="index.php?action=out">退出</a></li>
            <li>|</li>
@@ -50,11 +50,11 @@ if (!(isset($_COOKIE['is_log'])&&$_COOKIE['is_log']==1)) {
        </header><!--页头结束-->
 
        <div id="content"><!--内容开始-->
-     
-          <div class="form"> 
+
+          <div class="form">
             <ul>
 
-               <li  class="" onmousemove="show(this)">增加信息                            
+               <li  class="" onmousemove="show(this)">增加信息
                    <section id="one">
                    <?php
                         if (isset($_GET['addState'])&&$_GET['addState']=='success') {
@@ -67,7 +67,7 @@ if (!(isset($_COOKIE['is_log'])&&$_COOKIE['is_log']==1)) {
                       ?>
                      <table class="login">
                       <!-- 增加信息表单 -->
-                      <?php 
+                      <?php
                         $conn=mysqli_connect("localhost","root","123456","school");
                         mysqli_query($conn, "set names utf8");
                         $sql="select * from province";
@@ -82,11 +82,11 @@ if (!(isset($_COOKIE['is_log'])&&$_COOKIE['is_log']==1)) {
                             <td>
                             <select id="province" name="province">
                             <option value='0' >请选则省</option>
-                            <?php 
+                            <?php
                               foreach($province as $k=>$v){
                             ?>
                             <option value='<?php echo $v['provinceid']?>'><?php echo $v['province']?></option>
-                            <?php 
+                            <?php
                               }
                             ?>
                             </select>
@@ -106,7 +106,7 @@ if (!(isset($_COOKIE['is_log'])&&$_COOKIE['is_log']==1)) {
                            </td>
                            <td class="right" >
                               <input type="text" class="se text" placeholder="录入学校信息" name="schoolInfo"></td>
-                           </td>   
+                           </td>
                         </tr>
                         <br />
                         <tr>
@@ -114,17 +114,17 @@ if (!(isset($_COOKIE['is_log'])&&$_COOKIE['is_log']==1)) {
                            </td>
                            <td class="right" >
                               <input type="text" class="se text" placeholder="录入学校信息" name="schoolCon"></td>
-                           </td>   
+                           </td>
                         </tr>
                         <tr>
                            <td><button type="submit" class="submit" value="提交">提交</button></td>
                            <td><button type="reset" class="reset" value="重置">重置</button></td>
                         </tr>
                      </form>
-                     </table>     
+                     </table>
                </li>
-               
-               <li class="first" onmousemove="show(this)">搜索学校 
+
+               <li class="first" onmousemove="show(this)">搜索学校
                    <section id="two">
                        <table class="login">
                        <form action="manage.php" method="POST">
@@ -134,11 +134,11 @@ if (!(isset($_COOKIE['is_log'])&&$_COOKIE['is_log']==1)) {
                             <td>
                                <select id="province" name="province">
                             <option value='0' >请选则省</option>
-                            <?php 
+                            <?php
                               foreach($province as $k=>$v){
                             ?>
                             <option value='<?php echo $v['provinceid']?>'><?php echo $v['province']?></option>
-                            <?php 
+                            <?php
                               }
                             ?>
                             </select>
@@ -146,7 +146,7 @@ if (!(isset($_COOKIE['is_log'])&&$_COOKIE['is_log']==1)) {
                             <td>
                                  <input class="search" type="submit" value="search">
                             </td>
-                         </tr>    
+                         </tr>
                          </form>
                        </table>
                        <?php
@@ -163,7 +163,7 @@ if (!(isset($_COOKIE['is_log'])&&$_COOKIE['is_log']==1)) {
                              <td>操作</td>
                          </tr>
 
-                         <?php 
+                         <?php
                        if ((!isset($_POST['province']))||(isset($_POST['province'])&&$_POST['province']=='0')) {
                          $db=new pdo('mysql:host=localhost;dbname=school;charset=utf8',"root","123456");
                           $str = "select * from schoolinfo";
@@ -173,19 +173,19 @@ if (!(isset($_COOKIE['is_log'])&&$_COOKIE['is_log']==1)) {
                           if ($count==0) {
                             echo "<tr><td>暂时没有数据！</td></tr>";
                           } else {
-                            for ($i=0; $i < $count; $i++) { 
+                            for ($i=0; $i < $count; $i++) {
                               echo "<tr>
                              <td>".$arrData[$i]['School_Province']."</td>
                              <td>".$arrData[$i]['SchoolName']."</td>
                              <td>
-                                
+
                                 <button > <a href=\"deleteInfo.php?name=".$arrData[$i]['SchoolName']."\">删除</a> </button>
                              </td>
                          </tr>";
                             }
                           }
                        } elseif (isset($_POST['province'])) {
-                         $db=new pdo('mysql:host=localhost;dbname=school;charset=utf8',"root","123456");
+                         $db=new pdo('mysql:host=115.159.201.83;dbname=school;charset=utf8',"bitzo","bitzo");
 			$str = "select * from province where provinceid =\"".$_POST['province']."\"";
 			$sth = $db->query($str);
 			$arrData = $sth->fetchall();
@@ -198,21 +198,21 @@ if (!(isset($_COOKIE['is_log'])&&$_COOKIE['is_log']==1)) {
                           if ($count==0) {
                             echo "<tr><td>暂时没有数据！</td></tr>";
                           } else {
-                            for ($i=0; $i < $count; $i++) { 
+                            for ($i=0; $i < $count; $i++) {
                               echo "<tr>
                              <td>".$arrData[$i]['School_Province']."</td>
                              <td>".$arrData[$i]['SchoolName']."</td>
                              <td>
-                                
+
                                 <button > <a href=\"deleteInfo.php?name=".$arrData[$i]['SchoolName']."\">删除</a> </button>
                              </td>
                          </tr>";
                             }
                           }
                        }
-                       ?>                    
+                       ?>
                       </table>
-                   </section>                
+                   </section>
                </li>
 
                <li  onmousemove="show(this)">更新信息
@@ -235,7 +235,7 @@ if (!(isset($_COOKIE['is_log'])&&$_COOKIE['is_log']==1)) {
                             </td>
                             <td class="right" >
                               <input type="textarea" class="se text" placeholder="录入学校信息" name="info" cols="20"></td>
-                            </td>  
+                            </td>
                          </tr>
                          <tr>
                             <td class="left">学校详情：
@@ -246,10 +246,10 @@ if (!(isset($_COOKIE['is_log'])&&$_COOKIE['is_log']==1)) {
                          </tr>
                          <tr>
                            <td><button type="submit" class="submit" value="更新">更新</button></td>
-                           <td><button type="reset" class="reset" value="重置">重置</button></td>                 
+                           <td><button type="reset" class="reset" value="重置">重置</button></td>
                          </tr>
                        </form>
-                         
+
                        </table>
                    </section>
               </li>
@@ -264,8 +264,8 @@ if (!(isset($_COOKIE['is_log'])&&$_COOKIE['is_log']==1)) {
        </footer><!--页尾结束-->
 
 
-     
-    </div>  
-       
-    </body>   
+
+    </div>
+
+    </body>
 </html>

@@ -10,7 +10,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'post') {
 	$code = $_POST['code'];
 	if ($_SESSION['code'] == $code) {
 		//连接数据库
-		$db = new pdo('mysql:host=localhost;dbname=school',"root","123456");
+		$db = new pdo('mysql:host=115.159.201.83;dbname=school',"bitzo","bitzo");
 		$str = "select * from admininfo where AdminName = \"$name\"";
 		$sth = $db->query($str);
 		var_dump($sth);
