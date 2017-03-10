@@ -1,10 +1,10 @@
 <?php
 /**
-* 
+*
 */
 class Location extends CI_Controller
 {
-	
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -41,6 +41,6 @@ class Location extends CI_Controller
 		$this->load->view('templete/page/header',$data);
 		$this->load->view('schools/index',$data);
 		$this->load->view('templete/page/footer');
-        var_dump($data);
+        // var_dump($data);
 	}
 }

@@ -5,8 +5,8 @@
                    <h2><?=$schools['0']['School_Province']?></h2>
                    <div class="hr"></div>
                    <p class="sub-heading">Lorem ipsum dolor sit  quasi minus laboriosam sit doloremque. Repellendus sint voluptatem illum, maiores in atque quaerat aspernatur ad alias!</p>
-              </div>   
-              <article class="card-group clearfix">             
+              </div>
+              <article class="card-group clearfix">
                     <?php foreach ($schools as $schoolInfo): ?>
                     <div class="card">
                        <h3><a href="<?=site_url("../../../school/".$schoolInfo['ID'])?>"><?=$schoolInfo['SchoolName']?></a></h3>
@@ -23,7 +23,7 @@
                       </p>
                     </div>
                     <?php endforeach; ?>
-                    
+
               </article>
                <div id="page">
                    <a href="<?=site_url('../../../location/'.$loc.'/'.$page_p)?>"><= 上一页</a>
@@ -32,6 +32,5 @@
                    <?php endforeach; ?>
                    <a href="<?=site_url('../../../location/'.$loc.'/'.$page_n)?>">下一页 =></a>
                </div>
-           </section>    
+           </section>
        </div><!--内容结束-->
-       

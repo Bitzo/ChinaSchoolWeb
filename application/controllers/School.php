@@ -1,10 +1,10 @@
 <?php
 /**
-* 
+*
 */
 class School extends CI_Controller
 {
-	
+
 	function __construct()
 	{
 		parent::__construct();
@@ -21,7 +21,7 @@ class School extends CI_Controller
 		echo "hello";
 		$this->load->view('templete/content/footer');
 	}
-	
+
 	public function view($school = "NULL")
 	{
 		if ($school == "NULL") {
